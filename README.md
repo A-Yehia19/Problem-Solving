@@ -1,2 +1,4 @@
 # Problem-Solving
-repo to share my answers of problems from different online judges
+Just sharing all my answers of problems on various online judges
+
+Feel free to navigate
