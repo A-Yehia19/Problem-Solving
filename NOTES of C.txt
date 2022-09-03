@@ -1,0 +1,43 @@
+1- ceil(), round(),floor() functions always convert float into integers
+
+2- %lf -->is used to scan doubles (decimal)
+ - %lld -->  is used to scan long long    (  OR %I64d mostly used in codeforces )
+ - %d --> is used to scan integers
+
+3- to use log :
+- we cant use log with any base except (10)
+- log is included in <math.h> library
+- log x is written as ( log10(x) )
+
+4- to make array:
+- array is one variable that carry many numbers at the same time
+- array is swritten as ( int arr[100]; ) ---- int this case x contain 100 numbers
+- to scan array ( scanf("%d",&arr[n]) ) ---- n is the order of the number ---- the program scan the (n)th number of the array
+- orders of arrays starts from 0,1,2,3,4,5,... ---- it mean that the order of the first number= 0
+- array are used to store string ( statement ) as characters store only letters
+- to scan string ( char x[100]
+                   scanf ("%s",&x) ) ---- (%s) is used to scan strings ( word ) while (%c) is used to scan characters ( letter )
+- every string ends automatically with (null character) ( '\0' ) ---- we can check for it in the loops as:
+     while (x[i] != '\0' ){ }
+- to cappitalize any letteer in a strin in an array we use ( topper ) function included in <cctype>
+              #include<cctype>
+              s[i] = toupper(s[i]);
+  and to di-cappitalize it we use ( tolower )
+
+5- ( return 0; ) is used to stop the code
+
+6- to change number which is scaned as string into a real number we subtract '0' (zero value) from the number
+                                      array[0]-'0'=   the number saved in the array
+
+7- to swap to numbers (characters) ina an array we use ( swap() ) function in <alghorithm> liberary
+
+_____________________________________________________________________________________________________________________________
+
+bitwise operations:
+
+(num) & (num)  => and
+(num) | (num)  => or
+(num) ^ (num)  => xor
+(num) << (number of times)  => left shift
+(num) >> (number of times)  => right shift
+

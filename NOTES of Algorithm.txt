@@ -1,0 +1,102 @@
+*checking:-*
+
+- all_of(start, end, condition_to_check) -> Test condition on all elements in range
+- any_of(start, end, condition_to_check) -> Test if any element in range fulfills condition
+- none_of(start, end, condition_to_check) -> Test if no elements fulfill condition (the condition should always return false)
+
+- for_each(start, end, function) -> Apply function to range
+
+- find(start, end, value) -> Returns an iterator to the first element in the range [first,last) that compares equal to value. If no such value is found, the function returns last.
+- find_if(start, end, condition) -> Returns an iterator to the first element in the range [first,last) for which condition returns true. If no such element is found, the function returns last.
+- find_if_not(start, end, condition) -> Returns an iterator to the first element in the range [first,last) for which condition returns false. If no such element is found, the function returns last.
+- find_end (start1, end1, start2, end2, myfunction(optional)) -> Find last subsequence in range -->Searches the range [first1,last1) for the last occurrence of the sequence defined by [first2,last2), and returns an iterator to its first element, or last1 if no occurrences are found.
+
+    bool myfunction (int i, int j) {
+      return (i-j==1);
+    }
+    int myints[] = {1,2,3,4,5,1,2,3,4,5};
+    int needle[] = {1,2,3};
+    vector<int>::iterator it;
+    it = find_end (myints, myints+9, needle, needle+3);  => return iterator at psoition 5 ->(if i and j are equal)
+    it = find_end (myints, myints+9, needle, needle+3, myfunction);  => return iterator at position 6
+
+- find_first_of(start1, end1, start2, end2, myfunction(optional)) -> same as find_end but find first occurence
+- adjacent_find(start, end) -> Find two equal adjacent elements in range and returt iterator at the first one
+
+- count(start, end, value) -> Returns the number of elements in the range [first,last) that compare equal to val.
+- count_if(start, end, function) -> Returns the number of elements in the range [first,last) for which condition is true.
+
+- mismatch(start, end, array_of_values_to_compare) -> returns a pair, where its members first and second point to the first element in both sequences that did not compare equal to each other.
+- equal(start, end, array_of_values_to_compare) -> returns true if all elements in the ranges are equal
+- is_permutation(start, end, start2) -> return true if all the elements in the range [first1,last1) compare equal to those of the range starting at first2 in any order, and false otherwise.
+- search -> same as find_first_of
+- search_n (mesh fahemha************************************************************************************)
+
+
+
+*sorting:-*
+- sort(start, end, sort_function(optional)) -> Sorts the elements in the range [first,last) into ascending order or acording to the sorting_function
+
+    bool myfunction (int i,int j) { return (i<j); }
+    int nums[] = {32,71,12,45,26,80,53,33};
+    sort(nums, nums+7, myfunction);
+
+- is_sorted(start, end, sorting_function(optional)) -> return true if the range is sorted
+- is sorted_until(start, end, sorting_function(optional)) -> return the first unsorted element in the range
+- partial_sort (mesh fahemha************************************************************************************)
+- stable_sort (mesh fahemha************************************************************************************)
+
+
+
+*on sorted containers:-*(has lower complexity)
+- lower_bound(start, end, value) -> Returns an iterator pointing to the first occurece of the value if existed and the value after it if not
+- upper_bound(start, end, value) -> Returns an iterator pointing to the first element greater than that value
+- equal_range(start, end, value) -> Returns a pair of iterators at which the value exist between them. the first is the start of the value and the second is after that value (next value)
+- binary_search(start, end, value) -> Returns true if any element in the range [first,last) is equivalent to val, and false otherwise.
+
+- merge(start1,end1,start2,end2,start_of_final) -> Merge two sorted ranges into one sorted range
+- inplace_merge(mesh fahemha************************************************************************************)
+- includes(first1,last1,first2,last2) -> Returns true if the sorted range [first1,last1) contains all the elements in the sorted range [first2,last2).
+- set_union(start1,end1,start2,end2,start_of_final) -> Union of two sorted ranges
+- set_intersection(start1,end1,start2,end2,start_of_final) -> Intersection of two sorted ranges
+- set_difference(start1,end1,start2,end2,start_of_final) -> Difference of the first sorted range with respect tp the second sorted range
+- set_symmetric_difference(start1,end1,start2,end2,start_of_final) -> Symmetric difference of two sorted ranges (union - intersection ) (A-B U B-A)
+
+
+
+*min/max:-*
+- min(value1,value2) -> return the smallest value
+- max(value1,value2) -> return the greatest value
+- minmax(array) -> return pair the first is the min and the second is the max
+- min_element -> return iterator to the smallest value
+- max_element(value1,value2) -> return iterator to the greatest value
+- minmax_element(array) -> return pair of iterators the first is the min and the second is the max
+
+
+
+*other:-*
+- lexicographical_compare(start1,end1,start2,end2) -> true if the first range compares lexicographically less than the second. false otherwise (same as string compare)
+- next_permutation(start,end) -> Transform range to next permutation and true if the function could rearrange the object as a lexicographicaly greater permutation. Otherwise, the function returns false. (better to us do-while)
+- prev_permutation(start,end) -> Transform range to previous permutation and true if the function could rearrange the object as a lexicographicaly lower permutation. Otherwise, the function returns false. (better to us do-while)
+
+    int myints[] = {1,2,3};
+    cout << "The 3! possible permutations with 3 elements:\n";
+    do {
+        cout << myints[0] << ' ' << myints[1] << ' ' << myints[2] << '\n';
+    } while ( next_permutation(myints,myints+3) );
+=================================================================================>after the loop the array return to be the beginnig state
+
+- unique(start, end) -> make all unique elements at the start and send the dublicates at the end and return an iterator to the element that follows the last element not removed. The range between first and this iterator includes all the elements in the sequence that were not considered duplicates.
+
+  int myints[] = {10,20,20,20,30,30,20,20,10};
+  vector<int> myvector (myints,myints+9);
+  vector<int>::iterator it;
+  it = unique (myvector.begin(), myvector.end());   // 10 20 30 20 10 ?  ?  ?  ?
+  myvector.resize( distance(myvector.begin(),it) );
+
+- reverse(start, end) -> Reverse range
+- rotate(start, middle, end) -> Rotates the order of the elements in the range in such a way that the element pointed by middle becomes the new first element.
+
+  for (int i=1; i<10; ++i) myvector.push_back(i); // 1 2 3 4 5 6 7 8 9
+  rotate(myvector.begin(),myvector.begin()+3,myvector.end());
+                                                  // 4 5 6 7 8 9 1 2 3

@@ -1,0 +1,173 @@
+cin >> n ;                           (  same as scanf("%d",&n);  )
+cout<< n ;                           (  same as printf("%d",n);  )
+
+auto n = ... ;  => indecate automatically the type of n (int,float,pointer,iterator,...etc) and set it
+	auto x=5;
+	auto y=&x;
+
+cin.ignore();  => ignore the next charcter in the input stream
+
+endl is used to print all what in   cout   function and print newline ad   "\n"
+
+to get the size of the array
+    arr = [1, 2, 3, 4]
+    int num = arr.size()................=>  num = 4
+
+to scan a sting with spaces we use { getline(cin, string_name) }
+	string s;
+	getline(cin, s);
+
+int i=INT_MAX
+   make i the maximun integer number
+
+min (a,b)
+	return the minimum number of a and b
+
+
+binary_search(start, end, val)  => search in a sorted array (return true of flase)
+lower_bound(start, end, val)  => search for the first occurence of the val (return the index of it)
+uper_bound(start, end, val)  => search for the last occurence of the val (return the index of the number right after it)
+............................................................................................................................
+
+-vectors:
+
+vector< type > name     is as array but with unlimited size 
+    vector<int>  x;        hint : vec is the name of the vector 
+
+to enter a number at the end in the vector we use (  x.push_back( ..the number.. );  )
+    x.push_back(25);
+
+to enter a number at the beginning in the vector we use (  x.push_front( ..the number.. );  )
+    x.push_front(25);
+
+to konw the size of the vector we use ( x.size() )
+
+to remove the last element in the vector we use (  x.pop_back();  )
+
+to remove the first element in the vector we use (  x.pop_front();  )
+
+to remove any element you are pointing in vector we use ( x.erase(..iterator..); )
+to remove range of element in vector we use ( x.erase(..iterator 1.., ..iterator 2..); )  => remove from the first iterator to the last iterator(exclusive)
+
+to sort vector elemnts we use ( sort(..iterator..) )
+    sort(x.begin(), x.begin()+3);  ...........=> to sort first four elements
+    sort(x.begin(), x.end());  ...........=> to sort all elements
+
+to get remove repettitive elements in vector we use (  unique(..iterator..) )  but it must be sorted
+
+x.resize(unique(x.begin(), x.end()) - x.begin());  .......=> is used to resize vector and the first n elements  (HINT : N is number we decide)
+x.resize(..num..)
+
+to search for a number in a vectorwe use  ( binary_search (..iterator.., ..the number we want.. ) )
+      bool check = binary_search ( sort(x.begin(), x.end()), 4 );     .....=> to check if number 4 is located in vector x
+
+.............................................................................................................................
+
+- deque:
+deque< type > name;
+
+has all the function of vector + push_front and pop_front  => (has lower complexity than insert and erase)
+
+.............................................................................................................................
+
+priority queue:  => store element sorted accoring to values (always sorted)
+priority_queue< type > name;
+
+push(N);  => add number N at the end
+pop();    => remove the prior element
+top();    => tell the prior element to remove
+size();   => tell the size of the queue
+empty();  => tell if the queue is empty or not
+
+.............................................................................................................................
+
+-queue  => first in first out           <--  _|_|_|_|_  <--
+queue< type > name;
+
+push(N);  => add number N at the end
+pop();    => remove number from the front
+front();  => tell the first element
+size();   => tell the size of the queue
+empty();  => tell if the queue is empty or not
+
+
+
+-stack  => first in last out            |_|_|_|_|_|_  <-- -->
+stack< type > name;
+
+push(N);  => add number N to the top
+pop();    => remove number from the top
+top();    => tell the top element
+size();   => tell the size of the stack
+empty();  => tell if the stack is empty or not
+
+.............................................................................................................................
+
+-sets:  => store unique elements
+set< type > name;
+
+x.insert(..number..);  => to enter a number to a set
+x.erase(..number..);   => to erase a number from a set
+x.size();              => to know the size of a set
+x.upper_bound(..number..)  => to know the first number greater than that number (return iterator)
+x.upper_bound(..number..)  => to know the first number smaller than or equal that number
+x.find(..number..);    => to search for a number in a set  (return iterartor point to the place if not found the iterartor will point to the end of the set)
+	set<type>::iterator it = x.find(N);
+	if(it==set.end()) printf("not found");
+
+to know how many times number is repeated we use (  x.count(..number..);  )  => return 0 or 1 in  case of set as no repetition is allowed (0: not found)
+
+to iterarte through elements of set in a loop we use for each or with iterators
+	for( int i : set){
+		printf("%d ",i);
+	}
+
+	for( auto it = set.begin() ; it!=set.end() ; it++ ){
+		cout << *it;
+	}
+
+.............................................................................................................................
+
+-multisets:  => same as set but store many of the same elements
+multiset< type > name;
+
+have same functions as sets
+x.count(..number..)  => return from 0 to n (not as sets as it can store many elements)
+x.erase(..number..)  => delete all the copies of that number (nothing will remain)
+					...but...
+x.erase(..iterator..) => delete all the repeated copies of that number (only one copy will remain)
+
+.............................................................................................................................
+
+-map:  => same as dictionary and its sorted according to the index (its index can be any type)
+map< type_of_index, type_of_value > name;
+
+map[ahmed]=50  => create new space with index 'ahmed' and value=50
+note: if you want to print 'map[medo]' and its not fount it will create it with value=0 to print
+
+note: 
+	map[ahmed]=50;
+	map[ahmed]=20;
+		=> will make ahmed = 20 (it overwrite)
+
+	map.insert({ahmed,50});
+	map.insert({ahmed,50});
+		=> will make ahmed = 50 (dont overwrite)
+
+same functions as set
+map.erase(..key..); => remove the key from the set
+map.size();         => return the size of the map
+map.count();        => return how many times the index is repeated
+map.find(..key..);  => to search for a number in a map  (return iterartor point to the place if not found the iterartor will point to the end of the map)
+
+to iterarte through elements of map in a loop we use for each
+	for( pair<type_of_index, type_of_value> p : set){
+		cout<< p.first << " " << p.second;
+	}
+
+.............................................................................................................................
+
+-unordered_map:  => same as map but unordered and the complixity can varies from O(1) -> O(n) according to the input
+unordered_map< type_of_index, type_of_value > name;
+
+same functions as map
