@@ -1,15 +1,21 @@
-//#include<stdlib.h>                //for absolute function
-//#include<ctype.h>
-#include<string.h>
 #include<stdio.h>
+#include<string.h>
 
 int main(){
-    int cal[5],tot=0;
-    char in[100000];
-    scanf("%d%d%d%d",&cal[1],&cal[2],&cal[3],&cal[4]);
+    int cal[4];
+    int ans = 0;
+    char in[100001];
+
+    for(int i=0; i<4; i++)
+        scanf("%d",&cal[i]);
+    
     scanf("%s",in);
-    for(int i=0 ; i<strlen(in) ; i++){
-        tot+=cal[in[i]-'0'];
+    int len = strlen(in);
+    for (int i = 0; i < len; i++){
+        int idx = in[i]-'0';
+        ans+=cal[idx-1];
     }
-    printf("%d",tot);
+
+    printf("%d",ans);
 }
+

@@ -1,16 +1,24 @@
-//#include<stdlib.h>                //for absolute function
-//#include<ctype.h>
-//#include<string.h>
 #include<stdio.h>
 
 int main(){
-    int len,ans=0;
-    char in[51];
-    scanf("%d",&len);
-    scanf("%s",&in);
-    for(int i=0 ; i<len-1 ; i++){
-        if(in[i]==in[i+1])
-            ans++;
+    int n, ans = 0;
+    char current;
+    scanf("%d",&n);
+    for(int i=0; i<n; i++){
+        char tmp;
+        scanf(" %c",&tmp);
+        
+        if(i==0)
+            current=tmp;   
+        else{
+            if(current != tmp)
+                current=tmp;
+            else
+                ans++;
+        }
     }
+    
+
     printf("%d",ans);
 }
+

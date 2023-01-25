@@ -1,40 +1,43 @@
-//#include<stdlib.h>
-//#include<unistd.h>
-//#include<string.h>
-//#include<math.h>
-#include<vector>
-#include<algorithm>
 #include<stdio.h>
 #include<iostream>
+#include<deque>
+
 using namespace std;
 
 int main(){
-    int n,no1=0,no2=0;
-    vector<int>in;
+    int n;
+    bool playerOne = true;
+    int player1=0, player2=0;
     cin >> n;
-    for(int i=0 ; i<n ; i++){
-        int k;
-        cin>>k;
-        in.push_back(k);
+    deque<int> in ;
+    
+    for(;n--;){
+        int tmp;
+        cin >> tmp;
+        in.push_back(tmp);
     }
-    for(int i=1 ; in.size() ; i++){
-        if(i%2==1){
-            if(in[0]>in[in.size()-1]){
-                no1+=in[0];
-                in.erase(in.begin());
-            }else{
-                no1+=in[in.size()-1];
-                in.erase(in.end()-1);
-            }
+
+    for(; in.size() ;){
+        int max;
+        int start = in[0];
+        int end = in[in.size()-1];
+        
+        if(start>=end){
+            max=start;
+            in.pop_front();
         }else{
-            if(in[0]>in[in.size()-1]){
-                no2+=in[0];
-                in.erase(in.begin());
-            }else{
-                no2+=in[in.size()-1];
-                in.erase(in.end()-1);
-            }
+            max=end;
+            in.pop_back();
         }
+
+        if(playerOne)
+            player1+=max;
+        else
+            player2+=max;
+        
+        playerOne = !playerOne;
     }
-    cout<<no1<<' '<<no2;
+
+    cout << player1 <<' '<< player2;
 }
+
